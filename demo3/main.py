@@ -1,5 +1,7 @@
 #coding:utf-8
 import tensorflow as tf
+#实现加法器功能
+
 
 #************************************1.图的构建节点阶段
 #****************************************************
@@ -16,6 +18,8 @@ update = tf.assign(state,new_value)
 # 启动图后, 变量必须先经过`初始化` (init) op 初始化,
 # 首先必须增加一个`初始化` op 到图中.
 init_op = tf.initialize_all_variables()
+
+
 
 
 
