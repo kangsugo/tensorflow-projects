@@ -15,6 +15,9 @@ class MNIST_with_CNN:
 
     def bias_varible(self,shape):
         initial = tf.constant(0.1,shape=shape)
+        # 函数说明
+        # 第一个参数是用于初始化的参数，第二个参数是将要把初始化参数放入的张量的维度格式
+
         return tf.Variable(initial)
 
 
@@ -44,12 +47,12 @@ if __name__=="__main__":
     #(应为卷积得到的是数值：5 * 5的矩阵和5 * 5的矩阵卷积结果为一个值。即对应位置相乘后求和。)
     # 卷积的权重张量形状是[5, 5, 1, 32], 前两个维度是patch的大小, 接着是输入的通道数目, 最后是输出的
     # 通道数目。 而对于每一个输出通道都有一个对应的偏置量。
-    w_conv1 = tool.weight_variable([5,5,1,32])
+    w_conv1 = tool.weight_variable([5,5,1,32])#<------->
     b_conv1 = tool.bias_varible([32])
 
     #为了用这一层,我们把 x 变成一个4d向量,其第2、第3维对应图片的宽、高,最后一维代表图片的颜色通道数(因
     #为是灰度图所以这里的通道数为1,如果是rgb彩色图,则为3)。
-    x_image = tf.reshape(x,[-1,28,28,1])#将28 * 28的图片转换成4d向量
+    x_image = tf.reshape(x,[-1,28,28,1])#将28 * 28的图片转换成4d向量 #<------->
     h_conv1 = tf.nn.relu(tool.conv2d(x_image,w_conv1) + b_conv1)
     h_pool1 = tool.max_pool_2x2(h_conv1)
 
